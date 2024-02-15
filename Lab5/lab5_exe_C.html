@@ -203,76 +203,99 @@ Description : DOM Elements.
 		<footer>
 			<p>Copyright © 2024</p>
 		</footer>
-		<script>
-			document.addEventListener('DOMContentLoaded', function afterRender() {
-				// Task 1: Set the text content of all elements with the class 'companyName' and remove their border
-				document.querySelectorAll('.companyName').forEach((element) => {
-					element.textContent = 'SYED DANIAL FARRUKH';
-					element.classList.remove('companyName');
-				});
+			<script>
+				document.addEventListener('DOMContentLoaded', function afterRender() {
+					// Task 1: Set the text content of all elements with the class 'companyName' and remove their border
+					document.querySelectorAll('.companyName').forEach((element) => {
+						element.textContent = 'SYED DANIAL FARRUKH';
+						element.classList.remove('companyName');
+					});
 
-				// Task 2: Change the background color of the navigation bar
-				document.querySelector('.nav').setAttribute('background-color', 'cyan')
+					// Task 2: Change the background color of the navigation bar
+					let myNavB = document.querySelector('nav')
+					myNavB.style.backgroundColor = 'cyan';
 
-				
+					
 
-				// Task 3: Hide the section titled 'What is full-stack?'
-				const toRem = Array.from(
-					document.querySelectorAll('h1')
-				).find((h2) => h2.textcontent === 'What is full-stack?');
-
-				if(toRem)
-				{
-					toRem.parentElement.style.display = "none";
-				}
-
-				// Task 4: Create a new <p> element and append it to the 'About Us' section
-				let myParagraph = document.createElement('p');
-				myParagraph.textContent = 'This is a new paragraph';
-				myParagraph.style.color = 'red';
-				let myAbout = document.querySelector('section');
-				myAbout.appendChild(myParagraph);
-
-				// Task 5: Add placeholders to input elements based on their corresponding label IDs
-			    let toChange = document.querySelectorAll('label')
-				toChange.forEach(label => 
-				{
-					let labelFor = label.getAttribute('for');
-					if(labelFor)
-					{
-						let myInput = document.getElementById(labelFor);
-						if(myInput)
-						{
-							myPlaceholder = labelFor.charAt(0)+labelFor.slice(1);
-							myInput.setAttribute('placeholder', myPlaceholder);
+					// Task 3: Hide the section titled 'What is full-stack?'
+					const myQ = document.querySelectorAll("h2")
+					myQ.forEach((element) => {
+						if (element.textContent === "What is full-stack?") {
+							element.parentElement.style.display = "none";
 						}
+					});
+
+					// Task 4: Create a new <p> element and append it to the 'About Us' section
+					let myParagraph = document.createElement('p');
+					myParagraph.textContent = 'This is a new paragraph';
+					myParagraph.style.color = 'red';
+					let myAbout = document.querySelector('section');
+					myAbout.appendChild(myParagraph);
+
+					// Task 5: Add placeholders to input elements based on their corresponding label IDs
+					let toChange = document.querySelectorAll('label')
+					toChange.forEach(label => 
+					{
+						let labelFor = label.getAttribute('for');
+						if(labelFor)
+						{
+							let myInput = document.getElementById(labelFor);
+							if(myInput)
+							{
+								myPlaceholder = labelFor.charAt(0)+labelFor.slice(1);
+								myInput.setAttribute('placeholder', myPlaceholder);
+							}
+						}
+					});
+
+					// Task 6: Set the src attribute of the image
+					let myImage = document.querySelector('img');
+					if(myImage)
+					{
+						myImage.setAttribute('src', './images/example.svg');
 					}
-				})
 
-				// Task 6: Set the src attribute of the image
-                let image = document.querySelector('img');
-				if(img)
-				{
-					image.setAttribute = ('src', './images/example.svg')
-				}
+					// Task 7: Add a new item in the navigation menu
+					let newNavTag = document.createElement('a');
+					newNavTag.setAttribute('href', '#');
+					newNavTag.textContent = "Blog";
+					let navBar = document.querySelector('ul');
+					let newItem = document.createElement('li');
+					newItem.appendChild(newNavTag);
+					navBar.appendChild(newItem);
 
-				// Task 7: Add a new item in the navigation menu
-				let newNavTag = createElement('a');
-				newNavTag.setAttribute('href', '#');
-				newNavTag.textContent = "Blog";
-				let navBar = document.querySelector('ul');
-				let newItem = createElement('li');
-				newItem.innerHTML = newNavTag;
-				navBar.appendChild(newItem);
+					// Task 8: Change the submit button text upon clicking and make it disabled
+					let buttonDyn = document.querySelectorAll('input')
+					buttonDyn.forEach((input)=>
+					{
+						if(input.getAttribute('type') === 'button')
+						{
+							input.addEventListener('click', function disable621()
+							{
+								input.setAttribute('value', 'submitted')
+								input.disabled = true;
+							});
+						}
+					});
 
-				// Task 8: Change the submit button text upon clicking and make it disabled
+					// Task 9: Change the text color of each item in the 'Related Links' to green
+					let checkRelated = document.querySelectorAll('h3');
+					checkRelated.forEach((h3) => 
+					{
+						if(h3.textContent === 'Related Links')
+						{
+							let inRelated = h3.nextElementSibling;
+							let myListHere = inRelated.querySelectorAll('a');
+							myListHere.forEach((a) => 
+							{
+								a.style.color='green';
+							});
+						}
+					});
 
-
-				// Task 9: Change the text color of each item in the 'Related Links' to green
-
-
-				// Task 10: Add a red solid border to the footer
-			});
-		</script>
+					// Task 10: Add a red solid border to the footer
+					document.querySelector('footer').style.border = '2px solid red';
+				});
+			</script>
 	</body>
 </html>
